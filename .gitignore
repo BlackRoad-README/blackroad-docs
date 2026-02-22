@@ -1,3 +1,9 @@
-out/
+
+# Build outputs
+.cache/
+.docusaurus/
 .next/
+build/
+dist/
 node_modules/
+out/

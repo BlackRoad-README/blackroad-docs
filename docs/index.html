@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BlackRoad OS — Brand &amp; Content Hub</title>
+  <meta name="description" content="Official brand copy, captions, product descriptions and verified facts for BlackRoad OS, Inc.">
+  <meta property="og:title" content="BlackRoad OS — Brand &amp; Content Hub">
+  <meta property="og:description" content="The complete content and data hub for BlackRoad OS, Inc.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛣️</text></svg>">
+  <style>
+    :root {
+      --deep-black: #0A0A0A; --charcoal: #1A1A1A; --white: #FFFFFF;
+      --g0:#FF9D00; --g1:#FF6B00; --g2:#FF0066; --g3:#FF006B; --g4:#D600AA; --g5:#7700FF; --g6:#0066FF;
+      --grad: linear-gradient(135deg,#FF9D00 0%,#FF6B00 14%,#FF0066 28%,#FF006B 42%,#D600AA 57%,#7700FF 71%,#0066FF 100%);
+      --xs:8px; --sm:13px; --md:21px; --lg:34px; --xl:55px; --xxl:89px; --xxxl:144px;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:'JetBrains Mono','SF Mono','Fira Code','Courier New',monospace;background:var(--deep-black);color:var(--white);line-height:1.618;-webkit-font-smoothing:antialiased}
+
+    nav{position:sticky;top:0;z-index:100;padding:var(--sm) var(--xl);display:flex;justify-content:space-between;align-items:center;background:rgba(10,10,10,0.93);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.05)}
+    .nav-logo{font-size:1rem;font-weight:800;letter-spacing:.05em;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .nav-links{display:flex;gap:var(--lg);list-style:none}
+    .nav-links a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;transition:color .2s}
+    .nav-links a:hover{color:var(--white)}
+
+    .container{max-width:1200px;margin:0 auto;padding:0 var(--xl)}
+    section{padding:var(--xxxl) 0}
+    .section-wrap{max-width:1200px;margin:0 auto;padding:0 var(--xl)}
+    .section-label{font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:var(--md)}
+    h2{font-size:clamp(1.8rem,4vw,3.2rem);font-weight:700;line-height:1.1;margin-bottom:var(--lg)}
+    .gradient-text{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .section-sub{font-size:1rem;color:rgba(255,255,255,.55);max-width:560px;line-height:1.8;margin-bottom:var(--xl)}
+    .divider{height:1px;background:linear-gradient(to right,transparent,rgba(255,255,255,.07),transparent);margin:0 var(--xl)}
+
+    /* HERO */
+    #hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:var(--xxxl) var(--xl);max-width:1200px;margin:0 auto}
+    .hero-eyebrow{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--g0);margin-bottom:var(--lg)}
+    .hero-title{font-size:clamp(3rem,8vw,7rem);font-weight:800;line-height:1.0;margin-bottom:var(--xl)}
+    .hero-sub{font-size:clamp(1rem,2vw,1.3rem);color:rgba(255,255,255,.65);max-width:640px;margin-bottom:var(--xl);line-height:1.7}
+    .hero-cta{display:flex;gap:var(--md);flex-wrap:wrap;margin-bottom:var(--xxl)}
+    .btn{padding:var(--sm) var(--xl);border-radius:4px;font-family:inherit;font-size:.8rem;font-weight:700;letter-spacing:.08em;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:var(--xs);transition:all .2s;border:none}
+    .btn-primary{background:var(--grad);color:var(--white)}
+    .btn-primary:hover{opacity:.85;transform:translateY(-1px)}
+    .btn-ghost{background:transparent;color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.15)}
+    .btn-ghost:hover{border-color:rgba(255,255,255,.4);color:var(--white)}
+
+    .stats-bar{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:var(--xl);display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:var(--lg)}
+    .stat{text-align:center}
+    .stat-number{font-size:1.8rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .stat-label{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:4px}
+
+    /* IDENTITY */
+    .identity-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--xl);margin-top:var(--xl)}
+    .identity-block{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:var(--xl);margin-bottom:var(--md)}
+    .identity-block-label{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--g0);margin-bottom:var(--md)}
+    .identity-block-title{font-size:1.15rem;font-weight:700;margin-bottom:var(--md)}
+    .identity-block-text{font-size:.85rem;color:rgba(255,255,255,.6);line-height:1.8}
+    .principles-list{list-style:none;display:flex;flex-direction:column;gap:var(--md);margin-top:var(--lg)}
+    .principle{display:flex;gap:var(--md);align-items:flex-start;padding:var(--md);background:rgba(255,255,255,.02);border-radius:8px;border:1px solid rgba(255,255,255,.04)}
+    .principle-icon{font-size:1.2rem;flex-shrink:0}
+    .principle-title{font-size:.85rem;font-weight:700;margin-bottom:4px}
+    .principle-text{font-size:.8rem;color:rgba(255,255,255,.5)}
+
+    /* PRODUCTS */
+    .product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--md);margin-top:var(--xl)}
+    .product-card{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:var(--xl);transition:all .3s;position:relative;overflow:hidden}
+    .product-card:hover{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.15);transform:translateY(-3px)}
+    .product-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad);opacity:0;transition:opacity .3s}
+    .product-card:hover::before{opacity:1}
+    .product-icon{font-size:2rem;margin-bottom:var(--md);display:block}
+    .product-name{font-size:1rem;font-weight:800;margin-bottom:6px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .product-tagline{font-size:.7rem;color:rgba(255,255,255,.4);letter-spacing:.1em;text-transform:uppercase;margin-bottom:var(--md)}
+    .product-desc{font-size:.85rem;color:rgba(255,255,255,.65);line-height:1.7;margin-bottom:var(--md)}
+    .product-tags{display:flex;flex-wrap:wrap;gap:6px}
+    .tag{font-size:.65rem;padding:3px 10px;border-radius:100px;letter-spacing:.1em;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.5)}
+
+    /* PROOF */
+    .proof-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:var(--md);margin-top:var(--xl)}
+    .proof-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:10px;padding:var(--lg);display:flex;gap:var(--md);align-items:flex-start}
+    .proof-icon{font-size:1.5rem;flex-shrink:0}
+    .proof-title{font-size:.9rem;font-weight:700;margin-bottom:4px}
+    .proof-detail{font-size:.78rem;color:rgba(255,255,255,.45);line-height:1.6}
+
+    /* CAPTIONS */
+    .tabs{display:flex;gap:0;border-bottom:1px solid rgba(255,255,255,.07);margin-bottom:var(--xl);flex-wrap:wrap}
+    .tab{padding:var(--sm) var(--lg);background:none;border:none;font-family:inherit;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .2s}
+    .tab.active{color:var(--white);border-bottom-color:var(--g0)}
+    .tab:hover:not(.active){color:rgba(255,255,255,.7)}
+    .tab-pane{display:none}
+    .tab-pane.active{display:block}
+    .caption-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:var(--md)}
+    .caption-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:10px;padding:var(--lg);display:flex;flex-direction:column}
+    .caption-type{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--g0);margin-bottom:var(--sm)}
+    .caption-text{font-size:.82rem;color:rgba(255,255,255,.75);line-height:1.75;flex:1;margin-bottom:var(--sm);white-space:pre-wrap}
+    .copy-btn{align-self:flex-start;font-family:inherit;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;background:none;border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.3);padding:4px 12px;border-radius:4px;cursor:pointer;transition:all .15s}
+    .copy-btn:hover{color:var(--white);border-color:rgba(255,255,255,.35)}
+    .copy-btn.copied{color:#4ade80;border-color:#4ade80}
+
+    /* BRAND */
+    .colors-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:var(--md);margin-top:var(--xl)}
+    .swatch{border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,.06)}
+    .swatch-color{height:70px}
+    .swatch-info{padding:var(--sm);background:rgba(255,255,255,.03)}
+    .swatch-name{font-size:.75rem;font-weight:600;margin-bottom:2px}
+    .swatch-hex{font-size:.68rem;color:rgba(255,255,255,.4);letter-spacing:.05em}
+    .gradient-bar{height:8px;border-radius:4px;background:var(--grad);margin-top:var(--xl);margin-bottom:var(--sm)}
+
+    footer{border-top:1px solid rgba(255,255,255,.05);padding:var(--xl);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--md);max-width:1200px;margin:0 auto}
+    .footer-brand{font-size:.75rem;color:rgba(255,255,255,.25)}
+    .footer-links{display:flex;gap:var(--lg);list-style:none}
+    .footer-links a{font-size:.72rem;color:rgba(255,255,255,.25);text-decoration:none;transition:color .2s}
+    .footer-links a:hover{color:rgba(255,255,255,.6)}
+
+    @media(max-width:768px){
+      #hero,.section-wrap{padding-left:var(--md);padding-right:var(--md)}
+      section{padding:var(--xxl) 0}
+      nav{padding:var(--sm) var(--md)}
+      .nav-links{display:none}
+      .identity-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">BLACKROAD OS</div>
+  <ul class="nav-links">
+    <li><a href="#identity">Identity</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#proof">Proof</a></li>
+    <li><a href="#captions">Captions</a></li>
+    <li><a href="#brand">Brand</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div id="hero">
+  <div class="hero-eyebrow">↗ BlackRoad OS, Inc. — Official Brand &amp; Content Hub</div>
+  <h1 class="hero-title">
+    <span class="gradient-text">Your AI.</span><br>
+    Your Hardware.<br>
+    Your Rules.
+  </h1>
+  <p class="hero-sub">The operating system for compliant AI at scale. 30,000 agents. Cryptographic identity. Blockchain audit trails. Built for regulated industries that can't afford to fail.</p>
+  <div class="hero-cta">
+    <a href="https://blackroad.systems" class="btn btn-primary" target="_blank">→ Visit blackroad.systems</a>
+    <a href="https://blackroad.network" class="btn btn-ghost" target="_blank">Documentation</a>
+  </div>
+  <div class="stats-bar">
+    <div class="stat"><div class="stat-number">30K</div><div class="stat-label">AI Agents</div></div>
+    <div class="stat"><div class="stat-number">17</div><div class="stat-label">GitHub Orgs</div></div>
+    <div class="stat"><div class="stat-number">1,825+</div><div class="stat-label">Repositories</div></div>
+    <div class="stat"><div class="stat-number">75+</div><div class="stat-label">CF Workers</div></div>
+    <div class="stat"><div class="stat-number">14</div><div class="stat-label">Railway Projects</div></div>
+    <div class="stat"><div class="stat-number">Nov '25</div><div class="stat-label">Founded</div></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- IDENTITY -->
+<section id="identity">
+  <div class="section-wrap">
+    <p class="section-label">01 / Identity</p>
+    <h2><span class="gradient-text">What We Are</span></h2>
+    <p class="section-sub">The AI governance crisis is real. BlackRoad OS is the answer — where intelligence, compliance, and creativity move as one.</p>
+    <div class="identity-grid">
+      <div>
+        <div class="identity-block">
+          <div class="identity-block-label">Mission</div>
+          <div class="identity-block-title">Build deterministic, emotionally aware AI infrastructure for regulated industries.</div>
+          <p class="identity-block-text">Every enterprise faces the AI paradox: the more powerful the AI, the less they can trust it in production. We answer three fundamental questions regulators always ask: <strong>Who made this decision? Why? Can we prove it?</strong> — by design, not as an afterthought.</p>
+        </div>
+        <div class="identity-block">
+          <div class="identity-block-label">Vision</div>
+          <div class="identity-block-title">A global ecosystem where AI agents cooperate like trained teams, not chaotic swarms.</div>
+          <p class="identity-block-text">Every decision traceable. Every outcome explainable. Every action provably compliant. A compliance officer auditing 10,000 agent decisions in minutes — not months.</p>
+        </div>
+        <div class="identity-block">
+          <div class="identity-block-label">Core Taglines</div>
+          <div style="font-size:.85rem;color:rgba(255,255,255,.6);line-height:2">
+            <strong style="color:white">Primary:</strong> Your AI. Your Hardware. Your Rules.<br>
+            <strong style="color:white">Secondary:</strong> The road is the destination.<br>
+            <strong style="color:white">Founder:</strong> "You bring your chaos, your curiosity, your half-finished dreams. BlackRoad brings structure, compute, and care."
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="identity-block" style="height:100%">
+          <div class="identity-block-label">Core Principles</div>
+          <ul class="principles-list">
+            <li class="principle"><span class="principle-icon">⚡</span><div><div class="principle-title">Deterministic by Design</div><div class="principle-text">We don't bolt compliance onto existing AI. We build compliance into the foundation.</div></div></li>
+            <li class="principle"><span class="principle-icon">🧠</span><div><div class="principle-title">Human-Centered Orchestration</div><div class="principle-text">If you can describe what you want, Lucidia can coordinate it. No prompt engineering required.</div></div></li>
+            <li class="principle"><span class="principle-icon">🔐</span><div><div class="principle-title">Security First</div><div class="principle-text">Every decision is traceable. Every access is logged. Every risk is measured.</div></div></li>
+            <li class="principle"><span class="principle-icon">🌐</span><div><div class="principle-title">Iterate in Public</div><div class="principle-text">Transparency compounds trust. We build in the open and share the journey.</div></div></li>
+            <li class="principle"><span class="principle-icon">🔮</span><div><div class="principle-title">Integrity Over Optics</div><div class="principle-text">We tell the truth, even when it's awkward. We don't hide complexity — we explain it.</div></div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="section-wrap">
+    <p class="section-label">02 / Products</p>
+    <h2><span class="gradient-text">What We Offer</span></h2>
+    <p class="section-sub">Six battle-tested components that form the complete AI operating system for regulated enterprises.</p>
+    <div class="product-grid">
+      <div class="product-card">
+        <span class="product-icon">🛣️</span>
+        <div class="product-name">BlackRoad OS Platform</div>
+        <div class="product-tagline">The Core Operating System</div>
+        <p class="product-desc">Browser-native operating system with zero local dependencies. Unified identity, agent orchestration, and policy enforcement across all services. Deploy up to 30,000 concurrent AI agents with complete governance.</p>
+        <div class="product-tags"><span class="tag">30K Agents</span><span class="tag">Orchestration</span><span class="tag">Zero Config</span><span class="tag">Enterprise</span></div>
+      </div>
+      <div class="product-card">
+        <span class="product-icon">🎯</span>
+        <div class="product-name">ALICE QI</div>
+        <div class="product-tagline">Deterministic Reasoning Engine</div>
+        <p class="product-desc">Quantitative intelligence for risk scoring, portfolio analytics, and explainable decision-making. Every output is mathematically traceable — no black boxes, no guesswork. Built for fintech and compliance-heavy environments.</p>
+        <div class="product-tags"><span class="tag">Deterministic</span><span class="tag">Risk Intelligence</span><span class="tag">Explainable AI</span><span class="tag">Fintech</span></div>
+      </div>
+      <div class="product-card">
+        <span class="product-icon">🌀</span>
+        <div class="product-name">Lucidia</div>
+        <div class="product-tagline">Human-AI Orchestration Language</div>
+        <p class="product-desc">Specify agent behaviors and workflows in plain language. 10 domain expert agents — physicist, mathematician, chemist, and more. If you can describe what you want, Lucidia can coordinate it.</p>
+        <div class="product-tags"><span class="tag">Plain Language</span><span class="tag">10 Expert Agents</span><span class="tag">Workflow</span><span class="tag">No-Code</span></div>
+      </div>
+      <div class="product-card">
+        <span class="product-icon">📊</span>
+        <div class="product-name">Prism Console</div>
+        <div class="product-tagline">Enterprise Command Center</div>
+        <p class="product-desc">Real-time monitoring for agent swarms, compliance visualization, and RoadChain audit browser. Complete visibility into every agent, every policy violation, every compliance event — in one dashboard.</p>
+        <div class="product-tags"><span class="tag">Real-time</span><span class="tag">Policy Enforcement</span><span class="tag">Multi-Cloud</span><span class="tag">Compliance</span></div>
+      </div>
+      <div class="product-card">
+        <span class="product-icon">⛓️</span>
+        <div class="product-name">RoadChain</div>
+        <div class="product-tagline">Blockchain Audit Ledger</div>
+        <p class="product-desc">Tamper-evident blockchain logging for every agent action and system event. HIPAA-ready. Complete audit trails designed for regulatory oversight. Every decision is recorded, verifiable, and provably immutable.</p>
+        <div class="product-tags"><span class="tag">Blockchain</span><span class="tag">HIPAA Ready</span><span class="tag">Audit Trails</span><span class="tag">Immutable</span></div>
+      </div>
+      <div class="product-card">
+        <span class="product-icon">🔑</span>
+        <div class="product-name">PS-SHA-∞</div>
+        <div class="product-tagline">Cryptographic Identity System</div>
+        <p class="product-desc">Perpetual-state infinite cascade hashing — cryptographic identity that persists across migrations, restarts, and system changes. Every agent has verifiable identity. Every identity has provable history.</p>
+        <div class="product-tags"><span class="tag">Cryptographic</span><span class="tag">Infinite Chain</span><span class="tag">Agent Identity</span><span class="tag">Migration-Safe</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROOF -->
+<section id="proof">
+  <div class="section-wrap">
+    <p class="section-label">03 / Proof</p>
+    <h2><span class="gradient-text">Verified Facts</span></h2>
+    <p class="section-sub">Authoritative data for press, partners, and public use. All facts are verified against actual infrastructure.</p>
+    <div class="proof-grid">
+      <div class="proof-card"><span class="proof-icon">🏛️</span><div><div class="proof-title">Legal Entity</div><div class="proof-detail">BlackRoad OS, Inc.<br>Delaware C-Corporation<br>Founded: November 16, 2025</div></div></div>
+      <div class="proof-card"><span class="proof-icon">👤</span><div><div class="proof-title">Founder &amp; CEO</div><div class="proof-detail">Alexa Louise Amundson<br>Quantum physics · AI safety · Financial systems<br>Remote-first leadership</div></div></div>
+      <div class="proof-card"><span class="proof-icon">🐙</span><div><div class="proof-title">GitHub Infrastructure</div><div class="proof-detail">17 Organizations<br>1,825+ Repositories<br>235+ Forks of top OSS projects</div></div></div>
+      <div class="proof-card"><span class="proof-icon">🤖</span><div><div class="proof-title">Agent Capacity</div><div class="proof-detail">30,000 concurrent AI agents<br>5 specialized agent types<br>Multi-hardware node deployment</div></div></div>
+      <div class="proof-card"><span class="proof-icon">☁️</span><div><div class="proof-title">Cloud Infrastructure</div><div class="proof-detail">75+ Cloudflare Workers<br>14 Railway Projects<br>15+ Vercel Deployments</div></div></div>
+      <div class="proof-card"><span class="proof-icon">🍓</span><div><div class="proof-title">Edge Hardware</div><div class="proof-detail">Raspberry Pi fleet (3+ nodes)<br>DigitalOcean droplet<br>Cloudflare Tunnel (QUIC)</div></div></div>
+      <div class="proof-card"><span class="proof-icon">🔒</span><div><div class="proof-title">Compliance Ready</div><div class="proof-detail">HIPAA-compliant architecture<br>SOC 2 framework (cert 2026)<br>FedRAMP deployment available</div></div></div>
+      <div class="proof-card"><span class="proof-icon">🌐</span><div><div class="proof-title">Primary Domains</div><div class="proof-detail">blackroad.systems · blackroad.io<br>blackroad.network · blackroad.ai<br>lucidia.earth · blackroad.inc</div></div></div>
+      <div class="proof-card"><span class="proof-icon">📧</span><div><div class="proof-title">Contact</div><div class="proof-detail">blackroad.systems@gmail.com<br>Docs: blackroad.network<br>GitHub: BlackRoad-OS-Inc</div></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CAPTIONS -->
+<section id="captions">
+  <div class="section-wrap">
+    <p class="section-label">04 / Captions</p>
+    <h2><span class="gradient-text">Caption Library</span></h2>
+    <p class="section-sub">Ready-to-use copy for every platform. Click Copy to grab any caption.</p>
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab(this,'tab-hero')">Hero Copy</button>
+      <button class="tab" onclick="switchTab(this,'tab-twitter')">X / Twitter</button>
+      <button class="tab" onclick="switchTab(this,'tab-linkedin')">LinkedIn</button>
+      <button class="tab" onclick="switchTab(this,'tab-instagram')">Instagram</button>
+      <button class="tab" onclick="switchTab(this,'tab-short')">Short-Form</button>
+      <button class="tab" onclick="switchTab(this,'tab-founder')">Founder Voice</button>
+    </div>
+
+    <div class="tab-pane active" id="tab-hero">
+      <div class="caption-grid">
+        <div class="caption-card"><div class="caption-type">Primary Headline</div><div class="caption-text">Your AI. Your Hardware. Your Rules.</div><button class="copy-btn" onclick="copyCaption(this)">Copy</button></div>
+        <div class="caption-card"><div class="caption-type">Secondary Tagline</div><div class="caption-text">The AI Operating System for What's Next.</div><button class="copy-btn" onclick="copyCaption(this)">Copy</button></div>
+        <div class="caption-card"><div class="caption-type">Hero Sub-Copy</div><div class="caption-text">30,000 AI Agents. Sovereign Infrastructure. Deterministic Reasoning. Built for the enterprises that can't afford to fail.</div><button class="copy-btn" onclick="copyCaption(this)">Copy</button></div>
+        <div class="caption-card"><div class="caption-type">One-Liner</div><div class="caption-text">BlackRoad OS is the operating system for compliant AI at scale.</div><button class="copy-btn" onclick="copyCaption(this)">Copy</button></div>
+        <div class="caption-card"><div class="caption-type">Value Proposition</div><div class="caption-text">We fuse identity, mathematics, and orchestration into a unified platform where thousands of AI agents operate like a trained team — not a chaotic swarm.</div><button class="copy-btn" onclick="copyCaption(this)">Copy</button></div>
+        <div class="caption-card"><div class="caption-type">Brand Manifesto</div><div class="caption-text">The road is the destination.</div><button class="copy-btn" onclick="copyCaption(this)">Copy</button></div>
+        <div class="caption-card"><div class="caption-type">50-Word About</div><div class="caption-text">BlackRoad OS is a compliant AI operating system enabling enterprises to deploy autonomous agent swarms in regulated industries. With cryptographic identity verification, deterministic reasoning, and blockchain audit trails, BlackRoad OS serves fintech, healthcare, education, and government sectors requiring governed AI at scale.</div><button class="copy-btn" onclick="copyCaption(this)">Copy</button></div>
+        <div class="caption-card"><div class="caption-type">Problem Statement</div><div class="caption-text">The more powerful the AI, the less enterprises can trust it in production. Traditional deployments fail in regulated industries because they can't answer: Who made this decision? Why? Can we prove it to regulators? BlackRoad OS answers all three.</div><button class="copy-btn" onclick="copyCaption(this)">Copy</button></div>
+      </div>
+    </div>
+
+    <div class="tab-pane" id="tab-twitter">
+      <div class="caption-grid">
+        <div class="caption-card"><div class="caption-type">Launch Tweet</div><div class="caption-text">Introducing BlackRoad OS ↗
+
+30,000 AI agents. Cryptographic identity. Blockchain audit trails.
+
+The operating system that makes AI deployable in regulated industries.
+
+Your AI. Your Hardware. Your Rules.
+
+→ blackroad.systems
+
+#AI #Enterprise #Compliance</div><button class="copy-btn" onclick="copyCaption(this)">Copy</button></div>
+        <div class="caption-card"><div class="caption-type">Feature Thread Opener</div><div class="caption-text">The AI paradox hitting every enterprise:
+
+The more powerful your AI → the less you can trust it in production
+
+BlackRoad OS solves this with:
+→ Cryptographic agent identity (PS-SHA-∞)
+→ Blockchain audit trails (RoadChain)
+→ Deterministic reasoning (ALICE QI)
+
+Thread ↓</div><button class="copy-btn" onclick="copyCaption(this)">Copy</button></div>
+        <div class="caption-card"><div class="caption-type">Stats Tweet</div><div class="caption-text">Numbers that matter:
+
+30,000 — concurrent AI agents
+17 — GitHub organizations
+1,825+ — repositories
+75+ — Cloudflare Workers
+14 — Railway projects
+
+BlackRoad OS infrastructure, live.
+
+🛣️ blackroad.systems</div><button class="copy-btn" onclick="copyCaption(this)">Copy</button></div>
+        <div class="caption-card"><div class="caption-type">Thought Leadership</div><div class="caption-text">AI in regulated industries needs to answer 3 questions:
+
+1. Who made this decision? → Identity
+2. Why was it made? → Explainability
+3. Can we prove it? → Auditability
+
+We built an OS that answers all three by design, not as an afterthought.</div><button class="copy-btn" onclick="copyCaption(this)">Copy</button></div>
+        <div class="caption-card"><div class="caption-type">Product — Lucidia</div><div class="caption-text">What if you could orchestrate AI in plain language?
+
+No prompt engineering.
+No Python expertise.
+Just: describe what you want.
+
+That's Lucidia — human-AI orchestration.
+10 domain expert agents. Infinite possibilities.
+
+🌀 blackroad.systems</div><button class="copy-btn" onclick="copyCaption(this)">Copy</button></div>
+        <div class="caption-card"><div class="caption-type">Short Punch</div><div class="caption-text">AI infrastructure that actually works in regulated industries.
+
+Finally.
+
+→ blackroad.systems</div><button class="copy-btn" onclick="copyCaption(this)">Copy</button></div>
+      </div>
+    </div>
+
+    <div class="tab-pane" id="tab-linkedin">
+      <div class="caption-grid">
+        <div class="caption-card"><div class="caption-type">Company Launch</div><div class="caption-text">We just launched BlackRoad OS — the operating system for compliant AI at scale.
+
+Here's the problem we're solving:
+
+Every enterprise faces the AI paradox: the more powerful the AI, the less they can trust it in production.
+
+Fintech companies can't deploy AI that can't explain its risk decisions.
+Healthcare providers can't use AI without complete audit trails.
+Government agencies can't adopt AI that isn't provably accountable.
+
+So we built an entire operating system designed around compliance.
+
+Three capabilities that make the difference:
+
+1/ Cryptographic identity (PS-SHA-∞) — every agent has verifiable, persistent identity
+2/ Blockchain audit (RoadChain) — every decision is tamper-evident
+3/ Deterministic reasoning (ALICE QI) — every output is mathematically traceable
+
+30,000 agents. 17 GitHub orgs. 1,825+ repositories.
+
+Your AI. Your Hardware. Your Rules.
+
+→ blackroad.systems
+
+#AIGovernance #EnterpriseAI #Compliance</div><button class="copy-btn" onclick="copyCaption(this)">Copy</button></div>
+        <div class="caption-card"><div class="caption-type">Thought Leadership</div><div class="caption-text">The enterprise AI compliance crisis — and how we're solving it.
+
+I started BlackRoad OS because I kept seeing the same pattern:
+
+→ Companies desperate to use AI for critical workflows
+→ Compliance teams saying "not until we can audit it"
+→ No platform that genuinely solved both sides
+
+So we built one.
+
+BlackRoad OS answers the 3 questions every regulator will ask:
+1. Who made this decision? (Identity layer)
+2. Why was it made? (Explainable reasoning)
+3. Can you prove it? (Blockchain audit trail)
+
+Because AI that can't prove its decisions isn't enterprise-ready.
+
+— Alexa Louise Amundson, Founder &amp; CEO @ BlackRoad OS
+
+#EnterpriseAI #AIGovernance #Fintech #Compliance</div><button class="copy-btn" onclick="copyCaption(this)">Copy</button></div>
+        <div class="caption-card"><div class="caption-type">Prism Console Feature</div><div class="caption-text">Introducing Prism Console — the command center for your AI agent swarm.
+
+→ Real-time monitoring of 30,000+ agents
+→ Policy violation detection (before regulators find it)
+→ RoadChain audit browser (blockchain-verified history)
+→ Multi-cloud orchestration from one dashboard
+→ Compliance reporting, automated
+
+If you're running AI in production in a regulated environment, you need complete visibility.
+
+That's what Prism Console delivers.
+
+#AIOperations #EnterpriseAI #Compliance</div><button class="copy-btn" onclick="copyCaption(this)">Copy</button></div>
+      </div>
+    </div>
+
+    <div class="tab-pane" id="tab-instagram">
+      <div class="caption-grid">
+        <div class="caption-card"><div class="caption-type">Brand Intro</div><div class="caption-text">AI infrastructure for the real world ��️
+
+Your AI. Your Hardware. Your Rules.
+
+We build the operating system that makes autonomous agents deployable in regulated industries.
+
+30K agents. Cryptographic identity. Complete audit trails.
+
+↓ blackroad.systems</div><button class="copy-btn" onclick="copyCaption(this)">Copy</button></div>
+        <div class="caption-card"><div class="caption-type">6 Products Visual</div><div class="caption-text">6 products. One operating system. 🔮
+
+🛣️ BlackRoad OS — The Core
+🎯 ALICE QI — Deterministic Reasoning
+🌀 Lucidia — Human-AI Language
+📊 Prism Console — Command Center
+⛓️ RoadChain — Blockchain Audit
+🔑 PS-SHA-∞ — Cryptographic Identity
+
+Everything you need to deploy AI you can actually trust.
+
+#BlackRoadOS #AI #Enterprise</div><button class="copy-btn" onclick="copyCaption(this)">Copy</button></div>
+        <div class="caption-card"><div class="caption-type">Founder Quote Visual</div><div class="caption-text">"You bring your chaos, your curiosity, your half-finished dreams. BlackRoad brings structure, compute, and care. Together, you build worlds."
+
+— Alexa Louise Amundson, Founder
+
+🛣️ blackroad.systems</div><button class="copy-btn" onclick="copyCaption(this)">Copy</button></div>
+        <div class="caption-card"><div class="caption-type">Behind the Build</div><div class="caption-text">Built different. 🖤
+
+17 GitHub orgs. 1,825+ repos. 75+ Cloudflare Workers. Raspberry Pi edge nodes. Railway GPU clusters.
+
+This is what an AI operating system looks like from the inside.
+
+Every piece. Every layer. Every agent.
+
+→ blackroad.systems
+
+#BuildInPublic #AI #Infrastructure</div><button class="copy-btn" onclick="copyCaption(this)">Copy</button></div>
+      </div>
+    </div>
+
+    <div class="tab-pane" id="tab-short">
+      <div class="caption-grid">
+        <div class="caption-card"><div class="caption-type">5 Words</div><div class="caption-text">Your AI. Your Rules.</div><button class="copy-btn" onclick="copyCaption(this)">Copy</button></div>
+        <div class="caption-card"><div class="caption-type">10 Words</div><div class="caption-text">The operating system for compliant AI at scale.</div><button class="copy-btn" onclick="copyCaption(this)">Copy</button></div>
+        <div class="caption-card"><div class="caption-type">20 Words</div><div class="caption-text">30,000 AI agents. Cryptographic identity. Blockchain audit trails. Built for regulated industries that need provable AI.</div><button class="copy-btn" onclick="copyCaption(this)">Copy</button></div>
+        <div class="caption-card"><div class="caption-type">Twitter Bio</div><div class="caption-text">Open-source AI infrastructure for regulated industries. 30K agents. Deterministic reasoning. Blockchain audit trails. Your AI. Your Hardware. Your Rules. 🛣️ blackroad.systems</div><button class="copy-btn" onclick="copyCaption(this)">Copy</button></div>
+        <div class="caption-card"><div class="caption-type">LinkedIn Tagline</div><div class="caption-text">AI Infrastructure for Regulated Industries | HIPAA · SOC 2 · Enterprise</div><button class="copy-btn" onclick="copyCaption(this)">Copy</button></div>
+        <div class="caption-card"><div class="caption-type">Product Hunt</div><div class="caption-text">The AI OS for enterprises that can't afford to fail</div><button class="copy-btn" onclick="copyCaption(this)">Copy</button></div>
+        <div class="caption-card"><div class="caption-type">Email Subject</div><div class="caption-text">Deploy AI your compliance team will actually approve</div><button class="copy-btn" onclick="copyCaption(this)">Copy</button></div>
+        <div class="caption-card"><div class="caption-type">CTA Button</div><div class="caption-text">→ See How It Works</div><button class="copy-btn" onclick="copyCaption(this)">Copy</button></div>
+      </div>
+    </div>
+
+    <div class="tab-pane" id="tab-founder">
+      <div class="caption-grid">
+        <div class="caption-card"><div class="caption-type">Founding Story</div><div class="caption-text">I founded BlackRoad OS to bridge the gap between cutting-edge AI and real-world governance requirements. With a background spanning quantum physics research, financial systems architecture, and AI safety, I recognized that enterprises needed an operating system — not just another tool — to deploy AI responsibly at scale.
+
+My vision: intelligence, compliance, and creativity moving as one unified system.
+
+— Alexa Louise Amundson, Founder &amp; CEO</div><button class="copy-btn" onclick="copyCaption(this)">Copy</button></div>
+        <div class="caption-card"><div class="caption-type">Core Belief</div><div class="caption-text">"You bring your chaos, your curiosity, your half-finished dreams. BlackRoad brings structure, compute, and care. Together, you build worlds."</div><button class="copy-btn" onclick="copyCaption(this)">Copy</button></div>
+        <div class="caption-card"><div class="caption-type">On Compliance</div><div class="caption-text">Compliance isn't a blocker. It's the feature.
+
+When every agent has cryptographic identity, when every decision is blockchain-audited, when every reasoning step is deterministically explainable — compliance becomes a competitive advantage, not a ceiling.
+
+That's what BlackRoad OS is built for.</div><button class="copy-btn" onclick="copyCaption(this)">Copy</button></div>
+        <div class="caption-card"><div class="caption-type">On Building</div><div class="caption-text">We build in the open. We iterate in public. We document fast and explain clearly.
+
+Not because it's the easy path — but because transparency compounds trust.
+
+And in AI infrastructure, trust is the product.
+
+🛣️ BlackRoad OS</div><button class="copy-btn" onclick="copyCaption(this)">Copy</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- BRAND -->
+<section id="brand">
+  <div class="section-wrap">
+    <p class="section-label">05 / Brand</p>
+    <h2><span class="gradient-text">Brand System</span></h2>
+    <p class="section-sub">Official BlackRoad OS brand colors, typography, and spacing. All designs must use these exact values.</p>
+    <div class="gradient-bar"></div>
+    <div style="font-size:.7rem;color:rgba(255,255,255,.3);letter-spacing:.15em;text-transform:uppercase;margin-bottom:var(--xl)">Official Brand Gradient — Linear 135deg · #FF9D00 → #0066FF</div>
+    <div class="colors-grid">
+      <div class="swatch"><div class="swatch-color" style="background:#FF9D00"></div><div class="swatch-info"><div class="swatch-name">Sunrise Orange</div><div class="swatch-hex">#FF9D00</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#FF6B00"></div><div class="swatch-info"><div class="swatch-name">Warm Orange</div><div class="swatch-hex">#FF6B00</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#FF0066"></div><div class="swatch-info"><div class="swatch-name">Hot Pink</div><div class="swatch-hex">#FF0066</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#FF006B"></div><div class="swatch-info"><div class="swatch-name">Electric Magenta</div><div class="swatch-hex">#FF006B</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#D600AA"></div><div class="swatch-info"><div class="swatch-name">Deep Magenta</div><div class="swatch-hex">#D600AA</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#7700FF"></div><div class="swatch-info"><div class="swatch-name">Vivid Purple</div><div class="swatch-hex">#7700FF</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#0066FF"></div><div class="swatch-info"><div class="swatch-name">Cyber Blue</div><div class="swatch-hex">#0066FF</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#0A0A0A;border:1px solid rgba(255,255,255,.1)"></div><div class="swatch-info"><div class="swatch-name">Deep Black</div><div class="swatch-hex">#0A0A0A</div></div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--md);margin-top:var(--xl)">
+      <div style="background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:var(--xl)">
+        <div class="section-label" style="margin-bottom:var(--md)">Typography</div>
+        <div style="font-size:.8rem;color:rgba(255,255,255,.5);line-height:2.2">
+          <strong style="color:white">Primary:</strong> JetBrains Mono<br>
+          <strong style="color:white">Fallbacks:</strong> SF Mono, Fira Code, Courier New<br>
+          <strong style="color:white">Line Height:</strong> 1.618 (Golden Ratio φ)<br>
+          <strong style="color:white">Headings:</strong> 700–800 weight<br>
+          <strong style="color:white">Body:</strong> 400 weight
+        </div>
+      </div>
+      <div style="background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:var(--xl)">
+        <div class="section-label" style="margin-bottom:var(--md)">Spacing (φ = 1.618)</div>
+        <div style="font-size:.8rem;color:rgba(255,255,255,.5);line-height:2.2">
+          <strong style="color:white">xs:</strong> 8px &nbsp;·&nbsp; <strong style="color:white">sm:</strong> 13px<br>
+          <strong style="color:white">md:</strong> 21px &nbsp;·&nbsp; <strong style="color:white">lg:</strong> 34px<br>
+          <strong style="color:white">xl:</strong> 55px &nbsp;·&nbsp; <strong style="color:white">2xl:</strong> 89px<br>
+          <strong style="color:white">3xl:</strong> 144px
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">© 2025–2026 BlackRoad OS, Inc. All rights reserved. All content proprietary.</div>
+  <ul class="footer-links">
+    <li><a href="https://blackroad.systems" target="_blank">blackroad.systems</a></li>
+    <li><a href="https://blackroad.network" target="_blank">Docs</a></li>
+    <li><a href="mailto:blackroad.systems@gmail.com">Contact</a></li>
+    <li><a href="https://github.com/BlackRoad-OS-Inc" target="_blank">GitHub</a></li>
+  </ul>
+</footer>
+
+<script>
+function switchTab(btn,paneId){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(paneId).classList.add('active');
+}
+function copyCaption(btn){
+  const text=btn.closest('.caption-card').querySelector('.caption-text').innerText;
+  navigator.clipboard.writeText(text).then(()=>{
+    btn.textContent='Copied!';btn.classList.add('copied');
+    setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('copied');},2000);
+  });
+}
+</script>
+</body>
+</html>

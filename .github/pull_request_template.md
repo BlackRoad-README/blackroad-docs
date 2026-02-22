@@ -1,20 +1,23 @@
 ## Summary
+<!-- What does this PR do? -->
 
-Brief description of the changes.
+## Type
+- [ ] 🚀 Feature
+- [ ] 🐛 Bug Fix
+- [ ] 🔧 Chore / Refactor
+- [ ] 📚 Documentation
+- [ ] 🔒 Security
 
-## Type of Change
+## Changes
+<!-- List key changes -->
+-
 
-- [ ] New documentation
-- [ ] Documentation update
-- [ ] Architecture Decision Record
-- [ ] Runbook / operational procedure
-- [ ] Brand / design system update
+## Testing
+- [ ] Unit tests pass
+- [ ] Manual testing done
+- [ ] No regressions
 
 ## Checklist
-
-- [ ] Markdown passes lint (`npx markdownlint-cli2 "**/*.md"`)
-- [ ] All internal links are valid
-- [ ] Mermaid diagrams render correctly
-- [ ] Cross-references to related docs are included
-- [ ] README.md table of contents updated (if adding new file)
-- [ ] No proprietary information exposed beyond intended scope
+- [ ] CHANGELOG.md updated
+- [ ] No secrets committed
+- [ ] CI passes
