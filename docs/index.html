@@ -24,6 +24,7 @@
     <li><a href="#industries">Industries</a></li>
     <li><a href="#competitive">Competitive</a></li>
     <li><a href="#brand">Brand</a></li>
+    <li><a href="#documentation">Docs</a></li>
   </ul>
 </nav>
 
@@ -38,7 +39,7 @@
   <p class="hero-sub">The operating system for compliant AI at scale. 30,000 agents. Cryptographic identity. Blockchain audit trails. Built for regulated industries that can't afford to fail.</p>
   <div class="hero-cta">
     <a href="https://blackroad.systems" class="btn btn-primary" target="_blank">→ Visit blackroad.systems</a>
-    <a href="https://blackroad.network" class="btn btn-ghost" target="_blank">Documentation</a>
+    <a href="#documentation" class="btn btn-ghost">Documentation</a>
   </div>
   <div class="stats-bar">
     <div class="stat"><div class="stat-number">30K</div><div class="stat-label">AI Agents</div></div>
@@ -836,11 +837,64 @@ Source: github.com/BlackRoad-OS-Inc</div><button class="copy-btn" onclick="copyC
   </div>
 </section>
 
+<!-- DOCUMENTATION -->
+<section id="documentation">
+  <div class="section-wrap">
+    <p class="section-label">10 / Documentation</p>
+    <h2><span class="gradient-text">Docs &amp; Reference</span></h2>
+    <p class="section-sub">Full technical documentation for BlackRoad OS. Architecture, APIs, operations, and brand guidelines.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:var(--md);margin-top:var(--xl)">
+      <a href="architecture/OVERVIEW" style="text-decoration:none">
+        <div style="background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:var(--xl);transition:border-color .2s" onmouseover="this.style.borderColor='rgba(255,215,0,.4)'" onmouseout="this.style.borderColor='rgba(255,255,255,.06)'">
+          <div style="font-size:1.5rem;margin-bottom:var(--sm)">🏗️</div>
+          <div style="font-weight:700;margin-bottom:6px;color:white">Architecture Overview</div>
+          <div style="font-size:.8rem;color:rgba(255,255,255,.5)">Full system diagram, data flows, WireGuard mesh topology, and security model.</div>
+        </div>
+      </a>
+      <a href="api/gateway-api" style="text-decoration:none">
+        <div style="background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:var(--xl);transition:border-color .2s" onmouseover="this.style.borderColor='rgba(0,255,255,.4)'" onmouseout="this.style.borderColor='rgba(255,255,255,.06)'">
+          <div style="font-size:1.5rem;margin-bottom:var(--sm)">🔌</div>
+          <div style="font-weight:700;margin-bottom:6px;color:white">Gateway API Reference</div>
+          <div style="font-size:.8rem;color:rgba(255,255,255,.5)">REST endpoints, chat completions, agents, tasks, memory chain. OpenAI-compatible.</div>
+        </div>
+      </a>
+      <a href="operations/PI_FLEET" style="text-decoration:none">
+        <div style="background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:var(--xl);transition:border-color .2s" onmouseover="this.style.borderColor='rgba(0,255,136,.4)'" onmouseout="this.style.borderColor='rgba(255,255,255,.06)'">
+          <div style="font-size:1.5rem;margin-bottom:var(--sm)">🍓</div>
+          <div style="font-weight:700;margin-bottom:6px;color:white">Pi Fleet Runbook</div>
+          <div style="font-size:.8rem;color:rgba(255,255,255,.5)">Fleet inventory, Ollama model management, Tailscale mesh, agent deployment, recovery.</div>
+        </div>
+      </a>
+      <a href="brand/DESIGN_SYSTEM" style="text-decoration:none">
+        <div style="background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:var(--xl);transition:border-color .2s" onmouseover="this.style.borderColor='rgba(255,215,0,.4)'" onmouseout="this.style.borderColor='rgba(255,255,255,.06)'">
+          <div style="font-size:1.5rem;margin-bottom:var(--sm)">🎨</div>
+          <div style="font-weight:700;margin-bottom:6px;color:white">Brand Design System</div>
+          <div style="font-size:.8rem;color:rgba(255,255,255,.5)">Colors, typography, spacing (golden ratio), animations, component patterns.</div>
+        </div>
+      </a>
+      <a href="guides/deployment" style="text-decoration:none">
+        <div style="background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:var(--xl);transition:border-color .2s" onmouseover="this.style.borderColor='rgba(0,255,255,.4)'" onmouseout="this.style.borderColor='rgba(255,255,255,.06)'">
+          <div style="font-size:1.5rem;margin-bottom:var(--sm)">🚀</div>
+          <div style="font-weight:700;margin-bottom:6px;color:white">Deployment Guide</div>
+          <div style="font-size:.8rem;color:rgba(255,255,255,.5)">Deploy to Railway, Vercel, Cloudflare Workers, and Pi fleet. Rollback procedures.</div>
+        </div>
+      </a>
+      <a href="https://github.com/BlackRoad-OS-Inc/blackroad-docs" target="_blank" style="text-decoration:none">
+        <div style="background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:var(--xl);transition:border-color .2s" onmouseover="this.style.borderColor='rgba(255,255,255,.3)'" onmouseout="this.style.borderColor='rgba(255,255,255,.06)'">
+          <div style="font-size:1.5rem;margin-bottom:var(--sm)">📚</div>
+          <div style="font-weight:700;margin-bottom:6px;color:white">Full Documentation Repo</div>
+          <div style="font-size:.8rem;color:rgba(255,255,255,.5)">300+ docs: architecture, AI agents, business, strategy, roadmap, whitepapers.</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="footer-brand">© 2025–2026 BlackRoad OS, Inc. All rights reserved. All content proprietary.</div>
   <ul class="footer-links">
     <li><a href="https://blackroad.systems" target="_blank">blackroad.systems</a></li>
-    <li><a href="https://blackroad.network" target="_blank">Docs</a></li>
+    <li><a href="https://blackroad-os-inc.github.io/blackroad-docs/" target="_blank">Docs</a></li>
     <li><a href="mailto:blackroad.systems@gmail.com">Contact</a></li>
     <li><a href="https://github.com/BlackRoad-OS-Inc" target="_blank">GitHub</a></li>
   </ul>

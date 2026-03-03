@@ -75,6 +75,10 @@ paths:
         - `llama*`, `qwen*`, `mistral*`, `deepseek*` → Ollama (local Pi)
         - `claude-*` → Anthropic
         - `gpt-*`, `o1-*` → OpenAI
+
+        If the model name does not match any known prefix and Ollama is available,
+        the request is forwarded to Ollama as-is (useful for custom local models).
+        If Ollama is not available and no other provider matches, returns `503 No providers available`.
       tags: [completions]
       requestBody:
         required: true

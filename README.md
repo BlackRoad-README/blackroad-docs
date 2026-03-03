@@ -88,8 +88,11 @@ curl http://127.0.0.1:8787/v1/chat/completions \
 Lucidia Pi (192.168.4.81) runs Ollama on port `11434` with `llama3.2` pre-loaded. To route the gateway to it:
 
 ```bash
+# By LAN IP (always works)
+export BLACKROAD_OLLAMA_URL=http://192.168.4.81:11434
+# By mDNS hostname (.local requires mDNS/Bonjour on the same LAN)
 export BLACKROAD_OLLAMA_URL=http://lucidia.local:11434
-# or via Tailscale mesh:
+# Via Tailscale mesh (works from anywhere in the mesh):
 export BLACKROAD_OLLAMA_URL=http://100.66.235.47:11434
 ```
 
