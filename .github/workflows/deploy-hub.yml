@@ -1,15 +1,11 @@
 name: Deploy Brand Hub to Cloudflare Pages
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'docs/**'
   workflow_dispatch:
 
 jobs:
   deploy:
-    runs-on: [self-hosted, blackroad-fleet]
+    runs-on: ubuntu-latest
     name: Deploy to Cloudflare Pages
     permissions:
       contents: read

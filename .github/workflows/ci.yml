@@ -9,7 +9,7 @@ on:
 jobs:
   lint-markdown:
     name: Lint Markdown
-    runs-on: [self-hosted, blackroad-fleet]
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: markdownlint

@@ -1,0 +1,371 @@
+openapi: "3.1.0"
+info:
+  title: BlackRoad Agents Registry API
+  version: "1.0.0"
+  description: |
+    Registry and orchestration API for BlackRoad OS agents. Agents register here,
+    receive tasks, report status, and coordinate via the task marketplace.
+
+    **Local base URL:** `http://127.0.0.1:8787`
+    **Production base URL:** `https://gateway.blackroad.ai`
+  contact:
+    name: BlackRoad OS, Inc.
+    url: https://blackroad.systems
+  license:
+    name: Proprietary
+
+servers:
+  - url: http://127.0.0.1:8787
+    description: Local (gateway proxies agent routes)
+  - url: https://gateway.blackroad.ai
+    description: Production
+
+tags:
+  - name: registry
+    description: Agent registration and discovery
+  - name: tasks
+    description: Task assignment and status updates
+  - name: coordination
+    description: Multi-agent coordination patterns
+
+paths:
+  /agents:
+    get:
+      operationId: listAgents
+      summary: List all registered agents
+      tags: [registry]
+      parameters:
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [idle, busy, paused, offline]
+          description: Filter by agent status
+        - name: type
+          in: query
+          schema:
+            type: string
+            enum: [reasoning, worker, devops, analytics, memory, security]
+      responses:
+        "200":
+          description: Agent registry
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  agents:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Agent"
+                  total:
+                    type: integer
+              example:
+                agents:
+                  - id: lucidia
+                    name: LUCIDIA
+                    type: reasoning
+                    status: idle
+                    capabilities: [deep_analysis, synthesis, meta_cognition]
+                    last_seen: "2026-02-23T00:00:00Z"
+                total: 6
+
+  /agents/{name}:
+    get:
+      operationId: getAgent
+      summary: Get full agent profile by name
+      tags: [registry]
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+          examples:
+            lucidia:
+              value: LUCIDIA
+            alice:
+              value: ALICE
+      responses:
+        "200":
+          description: Agent profile
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AgentProfile"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /agents/{name}/task:
+    post:
+      operationId: assignTask
+      summary: Assign a task directly to a named agent
+      tags: [tasks]
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TaskAssignRequest"
+      responses:
+        "201":
+          description: Task assigned
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TaskResult"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "409":
+          description: Agent is busy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /tasks:
+    get:
+      operationId: listTasks
+      summary: List tasks in the marketplace
+      tags: [tasks]
+      parameters:
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [available, claimed, completed, failed]
+        - name: agent
+          in: query
+          schema:
+            type: string
+          description: Filter by assigned agent name
+        - name: priority
+          in: query
+          schema:
+            type: string
+            enum: [low, medium, high, critical]
+      responses:
+        "200":
+          description: Task list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tasks:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Task"
+                  total:
+                    type: integer
+
+  /tasks/{id}:
+    get:
+      operationId: getTask
+      summary: Get task by ID
+      tags: [tasks]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Task details
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Task"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    patch:
+      operationId: updateTask
+      summary: Update task status
+      description: |
+        Used by agents to claim (`status: claimed`) or complete (`status: completed`) tasks.
+        Completing requires a `result` field.
+      tags: [tasks]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [status]
+              properties:
+                status:
+                  type: string
+                  enum: [claimed, completed, failed]
+                result:
+                  type: string
+                  description: Required when status=completed
+                error:
+                  type: string
+                  description: Error message when status=failed
+      responses:
+        "200":
+          description: Task updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Task"
+        "409":
+          $ref: "#/components/responses/Conflict"
+
+components:
+  schemas:
+    Agent:
+      type: object
+      properties:
+        id:
+          type: string
+          example: lucidia
+        name:
+          type: string
+          example: LUCIDIA
+        type:
+          type: string
+          enum: [reasoning, worker, devops, analytics, memory, security]
+        status:
+          type: string
+          enum: [idle, busy, paused, offline]
+        capabilities:
+          type: array
+          items:
+            type: string
+        last_seen:
+          type: string
+          format: date-time
+
+    AgentProfile:
+      allOf:
+        - $ref: "#/components/schemas/Agent"
+        - type: object
+          properties:
+            personality:
+              type: object
+              properties:
+                style:
+                  type: string
+                  example: "Philosophical, contemplative"
+                greeting:
+                  type: string
+                traits:
+                  type: array
+                  items:
+                    type: string
+            model:
+              type: string
+              example: llama3.2
+            stats:
+              type: object
+              properties:
+                tasks_completed:
+                  type: integer
+                avg_response_ms:
+                  type: number
+                uptime_pct:
+                  type: number
+
+    Task:
+      type: object
+      properties:
+        id:
+          type: string
+          example: task_abc123
+        title:
+          type: string
+          example: Analyze system logs for anomalies
+        description:
+          type: string
+        status:
+          type: string
+          enum: [available, claimed, completed, failed]
+        priority:
+          type: string
+          enum: [low, medium, high, critical]
+        agent:
+          type: string
+          nullable: true
+          example: ALICE
+        posted_at:
+          type: string
+          format: date-time
+        claimed_at:
+          type: string
+          format: date-time
+          nullable: true
+        completed_at:
+          type: string
+          format: date-time
+          nullable: true
+        result:
+          type: string
+          nullable: true
+
+    TaskAssignRequest:
+      type: object
+      required: [title]
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        priority:
+          type: string
+          enum: [low, medium, high, critical]
+          default: medium
+        context:
+          type: object
+          additionalProperties: true
+          description: Additional context passed to the agent
+
+    TaskResult:
+      type: object
+      properties:
+        task_id:
+          type: string
+        agent:
+          type: string
+        status:
+          type: string
+        result:
+          type: string
+        completed_at:
+          type: string
+          format: date-time
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+    Conflict:
+      description: Conflict
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"

@@ -1,0 +1,586 @@
+openapi: "3.1.0"
+info:
+  title: BlackRoad Gateway API
+  version: "1.0.0"
+  description: |
+    Tokenless AI gateway for BlackRoad OS. All provider credentials are held
+    exclusively at the gateway boundary — agents and clients authenticate only
+    via the internal network.
+
+    **Local base URL:** `http://127.0.0.1:8787`
+    **Production base URL:** `https://gateway.blackroad.ai`
+  contact:
+    name: BlackRoad OS, Inc.
+    url: https://blackroad.systems
+  license:
+    name: Proprietary
+    url: https://github.com/BlackRoad-OS-Inc/blackroad-docs/blob/main/LICENSE
+
+servers:
+  - url: http://127.0.0.1:8787
+    description: Local development (Ollama on Pi or Mac)
+  - url: https://gateway.blackroad.ai
+    description: Production (Railway)
+
+tags:
+  - name: health
+    description: Gateway health and status
+  - name: completions
+    description: OpenAI-compatible chat completions (proxied to Ollama / Claude / OpenAI)
+  - name: agents
+    description: Registered agent registry
+  - name: tasks
+    description: Task marketplace
+  - name: memory
+    description: PS-SHA∞ tamper-evident memory chain
+
+paths:
+  /health:
+    get:
+      operationId: getHealth
+      summary: Gateway health check
+      tags: [health]
+      responses:
+        "200":
+          description: Gateway is healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthResponse"
+
+  /models:
+    get:
+      operationId: listModels
+      summary: List available models across all connected providers
+      tags: [health]
+      responses:
+        "200":
+          description: Model list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  models:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Model"
+
+  /v1/chat/completions:
+    post:
+      operationId: createChatCompletion
+      summary: OpenAI-compatible chat completions
+      description: |
+        Proxies to the correct AI provider based on the model name prefix:
+        - `llama*`, `qwen*`, `mistral*`, `deepseek*` → Ollama (local Pi)
+        - `claude-*` → Anthropic
+        - `gpt-*`, `o1-*` → OpenAI
+      tags: [completions]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ChatCompletionRequest"
+      responses:
+        "200":
+          description: Completion response (or SSE stream when stream=true)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ChatCompletionResponse"
+            text/event-stream:
+              schema:
+                type: string
+                description: SSE stream of completion chunks
+        "429":
+          $ref: "#/components/responses/RateLimited"
+        "502":
+          $ref: "#/components/responses/ProviderError"
+        "503":
+          $ref: "#/components/responses/NoProviders"
+
+  /agents:
+    get:
+      operationId: listAgents
+      summary: List all registered agents
+      tags: [agents]
+      responses:
+        "200":
+          description: Agent list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  agents:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Agent"
+                  total:
+                    type: integer
+
+  /agents/{name}:
+    get:
+      operationId: getAgent
+      summary: Get agent details by name
+      tags: [agents]
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+            example: LUCIDIA
+      responses:
+        "200":
+          description: Agent details
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Agent"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /agents/{name}/task:
+    post:
+      operationId: assignAgentTask
+      summary: Assign a task directly to a named agent
+      tags: [agents]
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TaskRequest"
+      responses:
+        "201":
+          description: Task created and assigned
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Task"
+
+  /tasks:
+    get:
+      operationId: listTasks
+      summary: List tasks in the marketplace
+      tags: [tasks]
+      parameters:
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [available, claimed, completed]
+      responses:
+        "200":
+          description: Task list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tasks:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Task"
+                  total:
+                    type: integer
+    post:
+      operationId: createTask
+      summary: Post a new task to the marketplace
+      tags: [tasks]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TaskRequest"
+      responses:
+        "201":
+          description: Task created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Task"
+
+  /tasks/{id}:
+    patch:
+      operationId: updateTask
+      summary: Update task status (claim or complete)
+      tags: [tasks]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  enum: [claimed, completed]
+                result:
+                  type: string
+                  description: Required when status=completed
+      responses:
+        "200":
+          description: Task updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Task"
+        "409":
+          $ref: "#/components/responses/Conflict"
+
+  /memory:
+    get:
+      operationId: listMemory
+      summary: List PS-SHA∞ memory entries
+      tags: [memory]
+      parameters:
+        - name: q
+          in: query
+          schema:
+            type: string
+          description: Full-text search term
+        - name: kind
+          in: query
+          schema:
+            type: string
+            enum: [fact, observation, inference]
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 50
+      responses:
+        "200":
+          description: Memory entries
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  entries:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/MemoryEntry"
+                  total:
+                    type: integer
+                  chain_valid:
+                    type: boolean
+    post:
+      operationId: createMemory
+      summary: Store a new memory entry
+      tags: [memory]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MemoryRequest"
+      responses:
+        "201":
+          description: Memory entry stored
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MemoryEntry"
+
+  /memory/verify:
+    get:
+      operationId: verifyMemoryChain
+      summary: Verify the integrity of the entire PS-SHA∞ chain
+      tags: [memory]
+      responses:
+        "200":
+          description: Chain verification result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  valid:
+                    type: boolean
+                  entries_checked:
+                    type: integer
+                  verified_at:
+                    type: string
+                    format: date-time
+
+components:
+  schemas:
+    HealthResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        version:
+          type: string
+          example: 1.0.0
+        uptime_seconds:
+          type: integer
+        providers:
+          type: object
+          additionalProperties:
+            type: string
+            enum: [connected, disconnected, error]
+        task_count:
+          type: integer
+        memory_entries:
+          type: integer
+
+    Model:
+      type: object
+      properties:
+        name:
+          type: string
+          example: llama3.2
+        provider:
+          type: string
+          enum: [ollama, anthropic, openai]
+        size_gb:
+          type: number
+        available:
+          type: boolean
+
+    ChatCompletionRequest:
+      type: object
+      required: [model, messages]
+      properties:
+        model:
+          type: string
+          example: llama3.2
+          description: "Model name — prefix determines provider routing"
+        messages:
+          type: array
+          items:
+            type: object
+            required: [role, content]
+            properties:
+              role:
+                type: string
+                enum: [system, user, assistant]
+              content:
+                type: string
+        temperature:
+          type: number
+          minimum: 0
+          maximum: 2
+          default: 0.7
+        max_tokens:
+          type: integer
+          default: 2048
+        stream:
+          type: boolean
+          default: false
+
+    ChatCompletionResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: chatcmpl-abc123
+        object:
+          type: string
+          example: chat.completion
+        model:
+          type: string
+        choices:
+          type: array
+          items:
+            type: object
+            properties:
+              index:
+                type: integer
+              message:
+                type: object
+                properties:
+                  role:
+                    type: string
+                  content:
+                    type: string
+              finish_reason:
+                type: string
+        usage:
+          type: object
+          properties:
+            prompt_tokens:
+              type: integer
+            completion_tokens:
+              type: integer
+            total_tokens:
+              type: integer
+
+    Agent:
+      type: object
+      properties:
+        id:
+          type: string
+          example: lucidia
+        name:
+          type: string
+          example: LUCIDIA
+        type:
+          type: string
+          enum: [reasoning, worker, devops, analytics, memory, security]
+        status:
+          type: string
+          enum: [idle, busy, paused, offline]
+        capabilities:
+          type: array
+          items:
+            type: string
+        last_seen:
+          type: string
+          format: date-time
+
+    Task:
+      type: object
+      properties:
+        id:
+          type: string
+          example: task_abc123
+        title:
+          type: string
+        description:
+          type: string
+        status:
+          type: string
+          enum: [available, claimed, completed]
+        priority:
+          type: string
+          enum: [low, medium, high, critical]
+        agent:
+          type: string
+          nullable: true
+        posted_at:
+          type: string
+          format: date-time
+        claimed_at:
+          type: string
+          format: date-time
+          nullable: true
+        completed_at:
+          type: string
+          format: date-time
+          nullable: true
+        result:
+          type: string
+          nullable: true
+
+    TaskRequest:
+      type: object
+      required: [title]
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        priority:
+          type: string
+          enum: [low, medium, high, critical]
+          default: medium
+        agent:
+          type: string
+          nullable: true
+          description: Preferred agent name (optional — marketplace auto-assigns if omitted)
+
+    MemoryEntry:
+      type: object
+      properties:
+        hash:
+          type: string
+          description: SHA-256 of (prev_hash:content:timestamp_ns)
+        prev_hash:
+          type: string
+          description: "'GENESIS' for first entry"
+        content:
+          type: string
+        kind:
+          type: string
+          enum: [fact, observation, inference]
+        truth_state:
+          type: integer
+          enum: [1, 0, -1]
+          description: "1=True, 0=Unknown, -1=False (Łukasiewicz trinary logic)"
+        timestamp:
+          type: string
+          format: date-time
+        chain_position:
+          type: integer
+
+    MemoryRequest:
+      type: object
+      required: [content]
+      properties:
+        content:
+          type: string
+        kind:
+          type: string
+          enum: [fact, observation, inference]
+          default: observation
+        truth_state:
+          type: integer
+          enum: [1, 0, -1]
+          default: 1
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+        retry_after:
+          type: integer
+          nullable: true
+
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+    Conflict:
+      description: Conflict (e.g. task already claimed)
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+    RateLimited:
+      description: Rate limit exceeded
+      headers:
+        Retry-After:
+          schema:
+            type: integer
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+    ProviderError:
+      description: Upstream AI provider error
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+    NoProviders:
+      description: No providers available
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
