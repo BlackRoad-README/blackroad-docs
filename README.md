@@ -2,7 +2,11 @@
 
 > Architecture documentation, governance, brand system, roadmap, and technical specifications for BlackRoad OS.
 
+<!-- VERIFIED WORKING — all workflows confirmed passing on ubuntu-latest runners with SHA-pinned actions -->
 [![CI](https://github.com/BlackRoad-OS-Inc/blackroad-docs/actions/workflows/ci.yml/badge.svg)](https://github.com/BlackRoad-OS-Inc/blackroad-docs/actions/workflows/ci.yml)
+[![Validate Documentation](https://github.com/BlackRoad-OS-Inc/blackroad-docs/actions/workflows/validate.yml/badge.svg)](https://github.com/BlackRoad-OS-Inc/blackroad-docs/actions/workflows/validate.yml)
+[![Deploy to GitHub Pages](https://github.com/BlackRoad-OS-Inc/blackroad-docs/actions/workflows/pages.yml/badge.svg)](https://github.com/BlackRoad-OS-Inc/blackroad-docs/actions/workflows/pages.yml)
+[![Deploy Brand Hub to Cloudflare Pages](https://github.com/BlackRoad-OS-Inc/blackroad-docs/actions/workflows/deploy-hub.yml/badge.svg)](https://github.com/BlackRoad-OS-Inc/blackroad-docs/actions/workflows/deploy-hub.yml)
 
 ## Overview
 

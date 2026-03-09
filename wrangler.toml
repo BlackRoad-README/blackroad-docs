@@ -1,3 +1,6 @@
 name = "blackroad-docs-hub"
 compatibility_date = "2024-12-01"
 pages_build_output_dir = "docs"
+
+# Status worker — deployed separately via the cloudflare-worker.yml workflow
+# Run: wrangler deploy src/worker/status.js --name blackroad-docs-status
