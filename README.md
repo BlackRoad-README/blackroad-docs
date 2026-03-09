@@ -47,6 +47,11 @@ npx markdownlint-cli2 "**/*.md"
 
 See [CONTRIBUTING.md](CONTRIBUTING.md)
 
+### Canonical Repos
+
+- **Brand design** (tokens, CSS, UI components) → [`blackroad-design`](https://github.com/BlackRoad-OS-Inc/blackroad-design)
+- **Operator tooling** (CLI, node bootstrap, scripts) → [`blackroad-operator`](https://github.com/BlackRoad-OS-Inc/blackroad-operator)
+
 ---
 
 © BlackRoad OS, Inc. — All rights reserved. Proprietary.

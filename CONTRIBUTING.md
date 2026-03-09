@@ -2,6 +2,17 @@
 
 > **All contributions are proprietary work-for-hire owned exclusively by BlackRoad OS, Inc.**
 
+## Canonical Repositories
+
+This repo contains **documentation only**. For code and assets, use the canonical repos:
+
+- **Brand design** (tokens, CSS, UI components) → [`blackroad-design`](https://github.com/BlackRoad-OS-Inc/blackroad-design)
+- **Operator tooling** (CLI, node bootstrap, scripts) → [`blackroad-operator`](https://github.com/BlackRoad-OS-Inc/blackroad-operator)
+
+Changes to the brand system belong in `blackroad-design`.
+Changes to operator tooling belong in `blackroad-operator`.
+Documentation about either goes here.
+
 ## Getting Started
 
 1. Clone the repo: `git clone https://github.com/BlackRoad-OS-Inc/blackroad-docs.git`

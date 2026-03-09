@@ -2,4 +2,13 @@
 # All changes require review from org owner
 # © BlackRoad OS, Inc.
 
+# Brand design docs — canonical repo is blackroad-design
+/brand/ @blackboxprogramming
+
+# Operator docs — canonical repo is blackroad-operator
+guides/ @blackboxprogramming
+runbooks/ @blackboxprogramming
+operations/ @blackboxprogramming
+
+# Everything else
 * @blackboxprogramming
