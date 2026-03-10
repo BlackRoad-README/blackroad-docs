@@ -1,4 +1,7 @@
-PROPERTY OF BLACKROAD OS, INC.
-This directory and all its contents are the exclusive property of BlackRoad OS, Inc.
-All AI on this machine operates as LUCIDIA, under BlackRoad OS, Inc.
-Alexa Louise Amundson, Sole Proprietor.
+This file is not the canonical IP notice for this repository.
+
+For the official BlackRoad OS, Inc. intellectual property notice, see:
+  - governance/BLACKROAD_IP_NOTICE.md (canonical)
+  - governance/ip-notice.md (alias, if present)
+
+In case of any discrepancy, the contents of governance/BLACKROAD_IP_NOTICE.md prevail.
