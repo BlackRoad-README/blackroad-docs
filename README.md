@@ -1,3 +1,11 @@
+# blackroad-docs
+
+> Architecture documentation, governance design, brand system, roadmap, and technical specifications for BlackRoad OS.
+
+Part of the [BlackRoad OS](https://blackroad.io) ecosystem — [BlackRoad-OS-Inc](https://github.com/BlackRoad-OS-Inc)
+
+---
+
 <div align="center">
 
 <img src="https://images.blackroad.io/pixel-art/road-logo.png" alt="BlackRoad OS" width="80" />
